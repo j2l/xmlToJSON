@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="filename2"/>
+<body onload="filename3"/>
 
 <style>
   #progress_bar {
@@ -36,7 +36,12 @@
 <script>
   var reader;
   var progress = document.querySelector('.percent');
-
+  var files = document.getElementById('files').files;
+    if (!files.length) {
+      alert('Please select a file!');
+      return;
+    }
+	
   function abortRead() {
     reader.abort();
   }
