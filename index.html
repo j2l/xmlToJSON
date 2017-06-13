@@ -92,7 +92,7 @@
   
     reader.onloadend = function(evt) {
       if (evt.target.readyState == FileReader.DONE) { // DONE == 2
-        var options = { 
+        var options = {
 	mergeCDATA: true,	// true extract cdata and merge with text nodes
 	grokAttr: true,		// true convert truthy attributes to boolean, etc
 	grokText: true,		// true convert truthy text/attr to boolean, etc
@@ -102,12 +102,12 @@
 	textKey: '_text', 	// _text tag name for text nodes
 	valueKey: '_value', 	// _value tag name for attribute values
 	attrKey: '_attr', 	// _attr tag for attr groups
-	cdataKey: '_cdata'	// _cdata tag for cdata nodes (ignored if mergeCDATA is true)
+	cdataKey: '_cdata',	// _cdata tag for cdata nodes (ignored if mergeCDATA is true)
 	attrsAsObject: true, 	// true if false, key is used as prefix to name, set prefix to '' to merge children and attrs.
 	stripAttrPrefix: true, 	// true remove namespace prefixes from attributes
 	stripElemPrefix: true, 	// true for elements of same name in diff namespaces, you can enable namespaces and access the nskey property
 	childrenAsArray: true 	// true force children into arrays
-};	
+	};	
         result = xmlToJSON.parseString(evt.target.result, options);
         result = JSON.stringify(result,null,2);
         document.getElementById('byte_content').textContent = result;
