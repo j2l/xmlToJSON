@@ -111,8 +111,8 @@
 	childrenAsArray: true 	// true force children into arrays
 	};	
         result = evt.target.result;
-	      new String (result.getBytes ("iso-8859-1"), "UTF-8");
-	      document.getElementById('raw').textContent = result;
+	resultnew = new String (result.getBytes ("iso-8859-1"), "UTF-8");
+	      document.getElementById('raw').textContent = resultnew;
 	result = xmlToJSON.parseString(result, options);
         result = JSON.stringify(result,null,2);
         document.getElementById('byte_content').textContent = result;
