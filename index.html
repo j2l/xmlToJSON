@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="string8"/>
+<body onload="raw"/>
 
 <style>
   #progress_bar {
@@ -30,6 +30,7 @@
 <input type="file" id="files" name="file" />
 <button onclick="abortRead();">Cancel read</button>
 <div id="progress_bar"><div class="percent">0%</div></div>
+	 <div id="raw"></div>
 <textarea class="form-control" rows=35 cols=120 id="byte_content"></textarea>
 </form>
 <script>
@@ -109,8 +110,9 @@
 	stripElemPrefix: true, 	// true for elements of same name in diff namespaces, you can enable namespaces and access the nskey property
 	childrenAsArray: true 	// true force children into arrays
 	};	
-        result = xmlToJSON.parseString(evt.target.result, options);
-        //result = JSON.stringify(result,null,2);
+        document.getElementById('raw').textContent = evt.target.result;
+	result = xmlToJSON.parseString(evt.target.result, options);
+        result = JSON.stringify(result,null,2);
         document.getElementById('byte_content').textContent = result;
       }}
   }
