@@ -38,6 +38,8 @@
 <script>
   var reader;
   var progress = document.querySelector('.percent');
+	        var result = evt.target.result;
+	result = decodeURIComponent(escape(result));
   function abortRead() {
     reader.abort();
   }
@@ -106,8 +108,7 @@
 	stripElemPrefix: true, 	// true for elements of same name in diff namespaces, you can enable namespaces and access the nskey property
 	childrenAsArray: true 	// true force children into arrays
 	};	
-        var result = evt.target.result;
-	result = str = decodeURIComponent(escape(result));
+
 	      //document.getElementById('raw').textContent = resultnew;
 	result = xmlToJSON.parseString(result, options);
 	beauty = JSON.stringify(result,null,2);
