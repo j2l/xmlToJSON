@@ -2,9 +2,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
-	<script type="text/javascript" src="https://github.com/eligrey/FileSaver.js/blob/master/FileSaver.js"></script>
 </head>
-<body onload="blob"/>
+<body onload="rightdiv"/>
 
 <style>
   #progress_bar {
@@ -125,10 +124,10 @@
 	
 	document.getElementById('btnSave').onclick = function() {
   if ('Blob' in window) {
-    var fileName = prompt('Please enter file name to save', 'result.json');
+    var fileName = prompt('Please enter file name to save. File content is UTF-8', 'result.json');
     if (fileName) {
       var textToWrite = document.getElementById('form-control').value.replace(/\n/g, '\r\n');
-      var textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
+      var textFileAsBlob = new Blob([textToWrite], { type: 'text/plain;charset=utf-8' });
 
       if ('msSaveOrOpenBlob' in navigator) {
         navigator.msSaveOrOpenBlob(textFileAsBlob, fileName);
