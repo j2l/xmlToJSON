@@ -127,7 +127,7 @@
   if ('Blob' in window) {
     var fileName = prompt('Please enter file name to save', 'result.json');
     if (fileName) {
-      var textToWrite = document.getElementById('exampleTextarea').value.replace(/\n/g, '\r\n');
+      var textToWrite = document.getElementById('form-control').value.replace(/\n/g, '\r\n');
       var textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
 
       if ('msSaveOrOpenBlob' in navigator) {
