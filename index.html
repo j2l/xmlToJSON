@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="convert"/>
+<body onload="unescape"/>
 
 <style>
   #progress_bar {
@@ -111,7 +111,7 @@
 	childrenAsArray: true 	// true force children into arrays
 	};	
         result = evt.target.result;
-	resultnew = new String (result.getBytes ("iso-8859-1"), "UTF-8");
+	resultnew = str = unescape(encodeURIComponent(result));
 	      document.getElementById('raw').textContent = resultnew;
 	result = xmlToJSON.parseString(result, options);
         result = JSON.stringify(result,null,2);
