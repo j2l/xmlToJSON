@@ -2,8 +2,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
+	<script type="text/javascript" src="https://github.com/eligrey/FileSaver.js/blob/master/FileSaver.js"></script>
 </head>
-<body onload="save"/>
+<body onload="FileSaver"/>
 
 <style>
   #progress_bar {
@@ -109,7 +110,7 @@
 	      //document.getElementById('raw').textContent = resultnew;
 	result = xmlToJSON.parseString(result, options);
 	var blob = new Blob([result], {type: "text/plain;charset=utf-8"});
-	saveAs(blob, filename+"result.json");
+	windows.saveAs(blob, filename+"result.json");
 	result = JSON.stringify(result,null,2);
         document.getElementById('byte_content').textContent = result; //escape(evt.target.files[0].name); //evt.target.files. evt.target.file.name; //.result
 
