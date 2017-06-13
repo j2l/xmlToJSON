@@ -36,12 +36,7 @@
 <script>
   var reader;
   var progress = document.querySelector('.percent');
-  var files = document.getElementById('files').files;
-    if (!files.length) {
-      alert('Please select a file!');
-      return;
-    }
-	var file = files[0];
+  
 	
   function abortRead() {
     reader.abort();
@@ -99,6 +94,11 @@
     //reader.readAsBinaryString(evt.target.files[0]);
   
     reader.onloadend = function(evt) {
+	    var files = document.getElementById('files').files;
+    if (!files.length) {
+      alert('Please select a file!');
+    }
+	var file = files[0];
       if (evt.target.readyState == FileReader.DONE) { // DONE == 2
         var options = {
 	mergeCDATA: true,	// true extract cdata and merge with text nodes
