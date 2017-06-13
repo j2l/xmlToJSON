@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="filename7"/>
+<body onload="multiple"/>
 
 <style>
   #progress_bar {
@@ -27,7 +27,7 @@
   }
 </style>
  <form action="fileupload" accept-charset="UTF-8">
-<input type="file" id="files" name="file" />
+<input type="file" id="files" name="file" multiple />
 <button onclick="abortRead();">Cancel read</button>
 <div id="progress_bar"><div class="percent">0%</div></div>
 	 <div id="raw"></div>
