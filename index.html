@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="attrsAsObject"/>
+<body onload="mergeCDATA"/>
 
 <style>
   #progress_bar {
@@ -92,7 +92,7 @@ var globalresult;
     reader.onloadend = function(evt) {
       if (evt.target.readyState == FileReader.DONE) { // DONE == 2
         var options = {
-	mergeCDATA: true,	// true extract cdata and merge with text nodes
+	mergeCDATA: false,	// true extract cdata and merge with text nodes
 	grokAttr: true,		// true convert truthy attributes to boolean, etc
 	grokText: true,		// true convert truthy text/attr to boolean, etc
 	normalize: true,	// true collapse multiple spaces to single space
