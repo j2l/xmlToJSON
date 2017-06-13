@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="global_result"/>
+<body onload="globalresult"/>
 
 <style>
   #progress_bar {
@@ -38,8 +38,7 @@
 <script>
   var reader;
   var progress = document.querySelector('.percent');
-	        var result = evt.target.result;
-	result = decodeURIComponent(escape(result));
+var globalresult;
   function abortRead() {
     reader.abort();
   }
@@ -108,9 +107,10 @@
 	stripElemPrefix: true, 	// true for elements of same name in diff namespaces, you can enable namespaces and access the nskey property
 	childrenAsArray: true 	// true force children into arrays
 	};	
-
+	        result = evt.target.result;
+	result = decodeURIComponent(escape(result));
 	      //document.getElementById('raw').textContent = resultnew;
-	result = xmlToJSON.parseString(result, options);
+	globalresult = xmlToJSON.parseString(result, options);
 	beauty = JSON.stringify(result,null,2);
         document.getElementById('byte_content').textContent = beauty; //escape(evt.target.files[0].name); //evt.target.files. evt.target.file.name; //.result
 
@@ -118,9 +118,8 @@
   }
   
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
-	
 	document.getElementById('btnSave').onclick = function() {
-		document.getElementById('byte_content').textContent = result;
+		document.getElementById('byte_content').textContent = globalresult;
   if ('Blob' in window) {
     var fileName = prompt('Please enter file name to save. File content is UTF-8', 'result.json');
     if (fileName) {
