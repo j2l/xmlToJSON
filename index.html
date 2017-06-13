@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="childrenAsArray"/>
+<body onload="unescape"/>
 
 <style>
   #progress_bar {
@@ -108,7 +108,8 @@ var globalresult;
 	childrenAsArray: true 	// true force children into arrays
 	};	
 	        result = evt.target.result;
-	result = decodeURIComponent(escape(result));
+	result = escape(result); 
+	      result = unescape(result);//decodeURIComponent
 	      //document.getElementById('raw').textContent = resultnew;
 	globalresult = xmlToJSON.parseString(result, options);
 	beauty = JSON.stringify(globalresult,null,2);
