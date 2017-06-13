@@ -4,7 +4,7 @@
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 	<script type="text/javascript" src="https://github.com/eligrey/FileSaver.js/blob/master/FileSaver.js"></script>
 </head>
-<body onload="alternative"/>
+<body onload="blob"/>
 
 <style>
   #progress_bar {
@@ -111,7 +111,7 @@
 	result = str = decodeURIComponent(escape(result));
 	      //document.getElementById('raw').textContent = resultnew;
 	result = xmlToJSON.parseString(result, options);
-	var Blob = new Blob([result], {type: "text/plain;charset=utf-8"});
+	//var Blob = new Blob([result], {type: "text/plain;charset=utf-8"});
 	//windows.saveAs(Blob, filename+"result.json");
 	      filename = "result.json";
 	      //window.navigator.msSaveOrOpenBlob(blob, filename);
