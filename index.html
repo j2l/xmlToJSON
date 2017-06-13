@@ -106,16 +106,12 @@
 	stripElemPrefix: true, 	// true for elements of same name in diff namespaces, you can enable namespaces and access the nskey property
 	childrenAsArray: true 	// true force children into arrays
 	};	
-        result = evt.target.result;
+        var result = evt.target.result;
 	result = str = decodeURIComponent(escape(result));
 	      //document.getElementById('raw').textContent = resultnew;
 	result = xmlToJSON.parseString(result, options);
-	//var Blob = new Blob([result], {type: "text/plain;charset=utf-8"});
-	//windows.saveAs(Blob, filename+"result.json");
-	      filename = "result.json";
-	      //window.navigator.msSaveOrOpenBlob(blob, filename);
-	result = JSON.stringify(result,null,2);
-        document.getElementById('byte_content').textContent = result; //escape(evt.target.files[0].name); //evt.target.files. evt.target.file.name; //.result
+	beauty = JSON.stringify(result,null,2);
+        document.getElementById('byte_content').textContent = beauty; //escape(evt.target.files[0].name); //evt.target.files. evt.target.file.name; //.result
 
       }}
   }
@@ -123,6 +119,7 @@
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
 	
 	document.getElementById('btnSave').onclick = function() {
+		document.getElementById('byte_content').textContent = result;
   if ('Blob' in window) {
     var fileName = prompt('Please enter file name to save. File content is UTF-8', 'result.json');
     if (fileName) {
