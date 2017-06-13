@@ -105,11 +105,14 @@
 	childrenAsArray: true 	// true force children into arrays
 	};	
         result = evt.target.result;
-	resultnew = str = decodeURIComponent(escape(result));
-	      document.getElementById('raw').textContent = resultnew;
+	result = str = decodeURIComponent(escape(result));
+	      //document.getElementById('raw').textContent = resultnew;
 	result = xmlToJSON.parseString(result, options);
-        result = JSON.stringify(result,null,2);
-        document.getElementById('byte_content').textContent = result;
+	var blob = new Blob([result], {type: "text/plain;charset=utf-8"});
+	saveAs(blob, filename+"result.json");
+	result = JSON.stringify(result,null,2);
+        document.getElementById('byte_content').textContent = result; //escape(evt.target.files[0].name); //evt.target.files. evt.target.file.name; //.result
+
       }}
   }
   
