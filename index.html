@@ -25,12 +25,12 @@
     width: 0;
   }
 </style>
-
+ <form action="/action_page.php" accept-charset="UTF-8">
 <input type="file" id="files" name="file" />
 <button onclick="abortRead();">Cancel read</button>
 <div id="progress_bar"><div class="percent">0%</div></div>
   <textarea class="form-control" rows=35 cols=120 id="byte_content"></textarea>
-
+</form>
 <script>
   var reader;
   var progress = document.querySelector('.percent');
