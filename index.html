@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="filename14"/>
+<body onload="decodeURIComponent"/>
 
 <style>
   #progress_bar {
@@ -36,12 +36,9 @@
 <script>
   var reader;
   var progress = document.querySelector('.percent');
-  
-	
   function abortRead() {
     reader.abort();
   }
-
   function errorHandler(evt) {
     switch(evt.target.error.code) {
       case evt.target.error.NOT_FOUND_ERR:
@@ -56,7 +53,6 @@
         alert('An error occurred reading this file.');
     };
   }
-
   function updateProgress(evt) {
     // evt is an ProgressEvent.
     if (evt.lengthComputable) {
@@ -68,12 +64,10 @@
       }
     }
   }
-
   function handleFileSelect(evt) {
     // Reset progress indicator on new file selection.
     progress.style.width = '0%';
     progress.textContent = '0%';
-
     reader = new FileReader();
     reader.onerror = errorHandler;
     reader.onprogress = updateProgress;
@@ -89,17 +83,10 @@
       progress.textContent = '100%';
       setTimeout("document.getElementById('progress_bar').className='';", 2000);
     }
-
     // Read in the image file as a binary string.
-    //reader.readAsBinaryString(evt.target.files[0]);
+    reader.readAsBinaryString(evt.target.files[0]);
   
     reader.onloadend = function(evt) {
-	    var files = document.getElementById('files').files;
-    if (!files.length) {
-      alert('Please select a file!');
-    }else{
-	    alert('ok');}
-	var file = files[0];
       if (evt.target.readyState == FileReader.DONE) { // DONE == 2
         var options = {
 	mergeCDATA: true,	// true extract cdata and merge with text nodes
@@ -118,17 +105,14 @@
 	childrenAsArray: true 	// true force children into arrays
 	};	
         result = evt.target.result;
-	result = decodeURIComponent(escape(result));
-	      //document.getElementById('raw').textContent = result;
+	resultnew = str = decodeURIComponent(escape(result));
+	      document.getElementById('raw').textContent = resultnew;
 	result = xmlToJSON.parseString(result, options);
         result = JSON.stringify(result,null,2);
-        document.getElementById('byte_content').textContent = result; //escape(evt.target.files[0].name); //evt.target.files. evt.target.file.name; //.result
-	/*var blob = new Blob([result], {type: "text/plain;charset=utf-8"});
-	saveAs(blob, filename+".txt");*/
+        document.getElementById('byte_content').textContent = result;
       }}
   }
   
-
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
 </script>
 
