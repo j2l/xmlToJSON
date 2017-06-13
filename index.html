@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="rightdiv"/>
+<body onload="rightdiv2"/>
 
 <style>
   #progress_bar {
@@ -126,7 +126,7 @@
   if ('Blob' in window) {
     var fileName = prompt('Please enter file name to save. File content is UTF-8', 'result.json');
     if (fileName) {
-      var textToWrite = document.getElementById('form-control').value.replace(/\n/g, '\r\n');
+      var textToWrite = document.getElementById('byte_content').value.replace(/\n/g, '\r\n');
       var textFileAsBlob = new Blob([textToWrite], { type: 'text/plain;charset=utf-8' });
 
       if ('msSaveOrOpenBlob' in navigator) {
