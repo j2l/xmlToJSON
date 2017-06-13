@@ -23,7 +23,7 @@ function myFunction(){
                     txt += "name: " + file.name + "<br>";
                 }
                 if ('size' in file) {
-                    txt += "size: " + file.size + " bytes <br>";
+                    txt += "size: " + (file.size / 1024 / 1024) + " MB <br>";
                 }
             }
         }
