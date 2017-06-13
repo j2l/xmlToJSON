@@ -93,7 +93,7 @@
     reader.onloadend = function(evt) {
       if (evt.target.readyState == FileReader.DONE) { // DONE == 2
         result = xmlToJSON.parseString(evt.target.result);
-        result = JSON.stringify(result);
+        result = JSON.stringify(result,null,2);
         document.getElementById('byte_content').textContent = result;
       }}
   }
