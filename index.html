@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="childrenarray"/>
+<body onload="attrsAsObjectrue"/>
 
 <style>
   #progress_bar {
@@ -100,9 +100,9 @@ var globalresult;
 	namespaceKey: '_ns', 	// _ns tag name for namespace objects
 	textKey: '_text', 	// _text tag name for text nodes
 	valueKey: '_value', 	// _value tag name for attribute values
-	attrKey: '_attr', 	// _attr tag for attr groups
+	attrKey: '', 	// _attr tag for attr groups
 	cdataKey: '_cdata',	// _cdata tag for cdata nodes (ignored if mergeCDATA is true)
-	attrsAsObject: false, 	// true if false, key is used as prefix to name, set prefix to '' to merge children and attrs.
+	attrsAsObject: true, 	// true if false, key is used as prefix to name, set prefix to '' to merge children and attrs.
 	stripAttrPrefix: true, 	// true remove namespace prefixes from attributes
 	stripElemPrefix: true, 	// true for elements of same name in diff namespaces, you can enable namespaces and access the nskey property
 	childrenAsArray: false 	// true force children into arrays
