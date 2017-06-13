@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="filename13"/>
+<body onload="filename14"/>
 
 <style>
   #progress_bar {
@@ -27,7 +27,7 @@
   }
 </style>
  <form action="fileupload" accept-charset="UTF-8">
-<input type="file" id="files" name="file" multiple />
+<input type="file" id="files" name="file" />
 <button onclick="abortRead();">Cancel read</button>
 <div id="progress_bar"><div class="percent">0%</div></div>
 	 <div id="raw"></div>
@@ -117,7 +117,7 @@
 	stripElemPrefix: true, 	// true for elements of same name in diff namespaces, you can enable namespaces and access the nskey property
 	childrenAsArray: true 	// true force children into arrays
 	};	
-        result = evt.target.files[0].result;
+        result = evt.target.result;
 	result = decodeURIComponent(escape(result));
 	      //document.getElementById('raw').textContent = result;
 	result = xmlToJSON.parseString(result, options);
