@@ -2,7 +2,7 @@
 <head>
 <script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="myFunction()">
+<body>
 
 <style>
   #progress_bar {
@@ -92,7 +92,8 @@
   
     reader.onloadend = function(evt) {
       if (evt.target.readyState == FileReader.DONE) { // DONE == 2
-        document.getElementById('byte_content').textContent = evt.target.result;
+        result = xmlToJSON.parseString(evt.target.result);
+        document.getElementById('byte_content').textContent = result;
       }}
   }
   
