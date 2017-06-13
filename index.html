@@ -89,7 +89,11 @@
 
     // Read in the image file as a binary string.
     reader.readAsBinaryString(evt.target.files[0]);
-
+  
+    reader.onloadend = function(evt) {
+      if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+        document.getElementById('byte_content').textContent = evt.target.result;
+      }}
   }
   
 
