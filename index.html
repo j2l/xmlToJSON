@@ -110,8 +110,10 @@
 	stripElemPrefix: true, 	// true for elements of same name in diff namespaces, you can enable namespaces and access the nskey property
 	childrenAsArray: true 	// true force children into arrays
 	};	
-        document.getElementById('raw').textContent = evt.target.result;
-	result = xmlToJSON.parseString(evt.target.result, options);
+        result = evt.target.result;
+	      new String (result.getBytes ("iso-8859-1"), "UTF-8");
+	      document.getElementById('raw').textContent = result;
+	result = xmlToJSON.parseString(result, options);
         result = JSON.stringify(result,null,2);
         document.getElementById('byte_content').textContent = result;
       }}
