@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="multiple"/>
+<body onload="filename10"/>
 
 <style>
   #progress_bar {
@@ -122,7 +122,7 @@
 	      //document.getElementById('raw').textContent = result;
 	result = xmlToJSON.parseString(result, options);
         result = JSON.stringify(result,null,2);
-        document.getElementById('byte_content').textContent = file.name; //evt.target.files. evt.target.file.name; //.result
+        document.getElementById('byte_content').textContent = evt.target.files[0].name; //evt.target.files. evt.target.file.name; //.result
 	/*var blob = new Blob([result], {type: "text/plain;charset=utf-8"});
 	saveAs(blob, filename+".txt");*/
       }}
