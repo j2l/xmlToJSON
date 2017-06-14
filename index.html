@@ -110,7 +110,7 @@ var globalresult;
 	stripElemPrefix: true, 	// true for elements of same name in diff namespaces, you can enable namespaces and access the nskey property
 	childrenAsArray: true 	// true force children into arrays
 	};	
-	        result = evt.target.result;
+	        result = evt.target.result; //is latin, not UTF8
 	result1 = encodeURIComponent(result);
 	      document.getElementById('raw1').textContent = result1;
 	      result2 = unescape(result); //escape(result); 
@@ -121,7 +121,8 @@ var globalresult;
 	      result4 = decodeURIComponent(result);
 	      document.getElementById('raw3').textContent = result4;
 	globalresult = xmlToJSON.parseString(result, options);
-	beauty = decodeURIComponent(escape(JSON.stringify(globalresult,null,2)));
+	      globalresult = decodeURIComponent(escape(globalresult)); //latin to UTF8
+	beauty = JSON.stringify(globalresult,null,2);
         document.getElementById('byte_content').textContent = beauty;
 
       }}
