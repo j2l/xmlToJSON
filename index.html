@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="charCodeAt8"/>
+<body onload="raw"/>
 
 <style>
   #progress_bar {
@@ -31,9 +31,9 @@
 <button onclick="abortRead();">Cancel read</button>
 	 
 <div id="progress_bar"><div class="percent">0%</div></div>
-	 raw1: <div id="raw"></div><br/>
+<!--	 raw1: <div id="raw"></div><br/>
 	 raw1: <div id="raw1"></div><br/>
-	 <!--raw2: <div id="raw2"></div><br/>
+	 raw2: <div id="raw2"></div><br/>
 	 raw3: <div id="raw3"></div><br/>
 	 raw4: <div id="raw4"></div><br/>-->
 <textarea class="form-control" rows=35 cols=120 id="byte_content"></textarea>
@@ -112,12 +112,12 @@ var globalresult;
 	childrenAsArray: true 	// true force children into arrays
 	};	
 	        result = evt.target.result; //is latin, not UTF8
-	      document.getElementById('raw').textContent = result; //.charCodeAt(0)+':'+result.charCodeAt(1)+':'+result.charCodeAt(2)
+	      //document.getElementById('raw').textContent = result; //.charCodeAt(0)+':'+result.charCodeAt(1)+':'+result.charCodeAt(2)
 	if (result.charCodeAt(0) == 239) { //find ï, remove BOM from UTF8
   result = result.substr(3);}
-	      result1 = result; //encodeURIComponent(result);
+/*	      result1 = result; //encodeURIComponent(result);
 	      document.getElementById('raw1').textContent = result1;
-/*	      result2 = unescape(result); //escape(result); 
+	      result2 = unescape(result); //escape(result); 
 	      //result = unescape(result);//decodeURIComponent
 	      document.getElementById('raw2').textContent = result2;
 	     result3 = escape(result);
@@ -127,7 +127,7 @@ var globalresult;
 	      //utf8to latin: unescape(encodeURIComponent(s)) */
 	globalresult = xmlToJSON.parseString(result, options);
 	      
-	beauty =  decodeURIComponent(escape(JSON.stringify(globalresult,null,2))); //latin to UTF8
+	beauty =  decodeURIComponent(escape(JSON.stringify(globalresult))); //,null,2 latin to UTF8
         document.getElementById('byte_content').textContent = beauty;
 
       }}
@@ -135,7 +135,7 @@ var globalresult;
   
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
 	document.getElementById('btnSave').onclick = function() {
-		document.getElementById('byte_content').textContent = decodeURIComponent(escape(JSON.stringify(globalresult)));
+		//document.getElementById('byte_content').textContent = decodeURIComponent(escape(JSON.stringify(globalresult)));
   if ('Blob' in window) {
     var fileName = prompt('Please enter file name to save. File content is UTF-8', 'result.json');
     if (fileName) {
