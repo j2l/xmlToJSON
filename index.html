@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="charCodeAt6"/>
+<body onload="charCodeAt7"/>
 
 <style>
   #progress_bar {
@@ -113,7 +113,7 @@ var globalresult;
 	};	
 	        result = evt.target.result; //is latin, not UTF8
 	      document.getElementById('raw').textContent = result; //.charCodeAt(0)+':'+result.charCodeAt(1)+':'+result.charCodeAt(2)
-	if (result.charCodeAt(0) === '\u00EF' && result.charCodeAt(0) === '\u00BB' && result.charCodeAt(0) === '\u00BF') { //remove BOM from UTF8
+	if (result.charCodeAt(0) === '\u00EF') { //find ï, remove BOM from UTF8
   result = result.substr(3);}
 	      result1 = result; //encodeURIComponent(result);
 	      document.getElementById('raw1').textContent = result1;
