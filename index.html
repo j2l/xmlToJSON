@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="ufeff2"/>
+<body onload="back"/>
 
 <style>
   #progress_bar {
@@ -107,7 +107,7 @@ var globalresult;
 	stripElemPrefix: true, 	// true for elements of same name in diff namespaces, you can enable namespaces and access the nskey property
 	childrenAsArray: true 	// true force children into arrays
 	};	
-	        result = '\ufeff' + evt.target.result;
+	        result = evt.target.result;
 	result = escape(result); 
 	      result = unescape(result);//decodeURIComponent
 	      //document.getElementById('raw').textContent = resultnew;
