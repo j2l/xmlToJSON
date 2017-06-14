@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="utflatin"/>
+<body onload="raw"/>
 
 <style>
   #progress_bar {
@@ -32,6 +32,7 @@
 	 
 <div id="progress_bar"><div class="percent">0%</div></div>
 	 <div id="raw"></div>
+	 <div id="raw2"></div>
 <textarea class="form-control" rows=35 cols=120 id="byte_content"></textarea>
 <br/>	 <button type="button" id="btnSave">Save</button>
 </form>
@@ -110,10 +111,12 @@ var globalresult;
 	        result = evt.target.result;
 	result = unescape(encodeURIComponent(result)); //escape(result); 
 	      //result = unescape(result);//decodeURIComponent
-	      //document.getElementById('raw').textContent = resultnew;
+	      document.getElementById('raw').textContent = result;
+	     result2 = decodeURIComponent(escape(result));
+	      document.getElementById('raw2').textContent = result2;
 	globalresult = xmlToJSON.parseString(result, options);
 	beauty = decodeURIComponent(escape(JSON.stringify(globalresult,null,2)));
-        document.getElementById('byte_content').textContent = beauty; //escape(evt.target.files[0].name); //evt.target.files. evt.target.file.name; //.result
+        document.getElementById('byte_content').textContent = beauty;
 
       }}
   }
