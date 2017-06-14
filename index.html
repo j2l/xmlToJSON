@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="utf8"/>
+<body onload="utf82"/>
 
 <style>
   #progress_bar {
@@ -110,7 +110,7 @@ var globalresult;
 	stripElemPrefix: true, 	// true for elements of same name in diff namespaces, you can enable namespaces and access the nskey property
 	childrenAsArray: true 	// true force children into arrays
 	};	
-	        result = evt.target.result; //is latin, not UTF8
+	        result = '\ufeff'+evt.target.result; //is latin, not UTF8
 	result1 = encodeURIComponent(result);
 	      document.getElementById('raw1').textContent = result1;
 	      result2 = unescape(result); //escape(result); 
