@@ -109,7 +109,7 @@ var globalresult;
 	};	
 	        result = evt.target.result;
 	result = escape(result); 
-	      result = unescape(result);//decodeURIComponent
+	      result = unescape('\ufeff'+result);//decodeURIComponent
 	      //document.getElementById('raw').textContent = resultnew;
 	globalresult = xmlToJSON.parseString(result, options);
 	beauty = JSON.stringify(globalresult,null,2);
