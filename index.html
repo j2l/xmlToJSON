@@ -112,8 +112,7 @@ var globalresult;
 	      //result = unescape(result);//decodeURIComponent
 	      //document.getElementById('raw').textContent = resultnew;
 	globalresult = xmlToJSON.parseString(result, options);
-	globalresult = decodeURIComponent(escape(globalresult));
-	beauty = JSON.stringify(globalresult,null,2);
+	beauty = decodeURIComponent(escape(JSON.stringify(globalresult,null,2)));
         document.getElementById('byte_content').textContent = beauty; //escape(evt.target.files[0].name); //evt.target.files. evt.target.file.name; //.result
 
       }}
