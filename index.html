@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="utf86"/>
+<body onload="utf87"/>
 
 <style>
   #progress_bar {
@@ -120,7 +120,7 @@ var globalresult;
 	      document.getElementById('raw2').textContent = result2;
 	     result3 = escape(result);
 	      document.getElementById('raw3').textContent = result3;
-	      result4 = decodeURIComponent(result);
+	      result4 = result; // decodeURIComponent(result);
 	      document.getElementById('raw3').textContent = result4;
 	      //utf8to latin: unescape(encodeURIComponent(s)) */
 	globalresult = xmlToJSON.parseString(result, options);
