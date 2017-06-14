@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="raw"/>
+<body onload="raws"/>
 
 <style>
   #progress_bar {
@@ -31,8 +31,10 @@
 <button onclick="abortRead();">Cancel read</button>
 	 
 <div id="progress_bar"><div class="percent">0%</div></div>
-	 <div id="raw"></div>
-	 <div id="raw2"></div>
+	 <div id="raw1"></div><br/>
+	 <div id="raw2"></div><br/>
+	 <div id="raw3"></div><br/>
+	 <div id="raw4"></div><br/>
 <textarea class="form-control" rows=35 cols=120 id="byte_content"></textarea>
 <br/>	 <button type="button" id="btnSave">Save</button>
 </form>
@@ -109,11 +111,15 @@ var globalresult;
 	childrenAsArray: true 	// true force children into arrays
 	};	
 	        result = evt.target.result;
-	result = unescape(encodeURIComponent(result)); //escape(result); 
+	result1 = encodeURIComponent(result);
+	      document.getElementById('raw1').textContent = result1;
+	      result2 = unescape(result); //escape(result); 
 	      //result = unescape(result);//decodeURIComponent
-	      document.getElementById('raw').textContent = result;
-	     result2 = decodeURIComponent(escape(result));
 	      document.getElementById('raw2').textContent = result2;
+	     result3 = escape(result);
+	      document.getElementById('raw3').textContent = result3;
+	      result4 = decodeURIComponent(result);
+	      document.getElementById('raw3').textContent = result4;
 	globalresult = xmlToJSON.parseString(result, options);
 	beauty = decodeURIComponent(escape(JSON.stringify(globalresult,null,2)));
         document.getElementById('byte_content').textContent = beauty;
