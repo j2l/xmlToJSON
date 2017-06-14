@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="utf85"/>
+<body onload="utf86"/>
 
 <style>
   #progress_bar {
@@ -111,9 +111,8 @@ var globalresult;
 	childrenAsArray: true 	// true force children into arrays
 	};	
 	        result = evt.target.result; //is latin, not UTF8
-	/*if (result.charCodeAt(0) === 0xFEFF) { //UTF with BOM to UTF8
-  result = result.substr(1);
-}*/
+	if (result.charCodeAt(0) === 'ï»¿') { //UTF with BOM to UTF8
+  result = result.substr(1);}
 	      result1 = encodeURIComponent(result);
 	      document.getElementById('raw1').textContent = result1;
 	      result2 = unescape(result); //escape(result); 
