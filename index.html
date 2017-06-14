@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/plain; charset=utf-8">
 	<script type="text/javascript" src="lib/xmlToJSON.min.js"></script>
 </head>
-<body onload="utf87"/>
+<body onload="utf88"/>
 
 <style>
   #progress_bar {
@@ -31,6 +31,7 @@
 <button onclick="abortRead();">Cancel read</button>
 	 
 <div id="progress_bar"><div class="percent">0%</div></div>
+	 raw1: <div id="raw"></div><br/>
 	 raw1: <div id="raw1"></div><br/>
 	 raw2: <div id="raw2"></div><br/>
 	 raw3: <div id="raw3"></div><br/>
@@ -111,6 +112,7 @@ var globalresult;
 	childrenAsArray: true 	// true force children into arrays
 	};	
 	        result = evt.target.result; //is latin, not UTF8
+	      document.getElementById('raw').textContent = result;
 	if (result.charCodeAt(0) === 'ï»¿') { //UTF with BOM to UTF8
   result = result.substr(1);}
 	      result1 = encodeURIComponent(result);
@@ -120,8 +122,8 @@ var globalresult;
 	      document.getElementById('raw2').textContent = result2;
 	     result3 = escape(result);
 	      document.getElementById('raw3').textContent = result3;
-	      result4 = result; // decodeURIComponent(result);
-	      document.getElementById('raw3').textContent = result4;
+	      result4 = decodeURIComponent(result);
+	      document.getElementById('raw4').textContent = result4;
 	      //utf8to latin: unescape(encodeURIComponent(s)) */
 	globalresult = xmlToJSON.parseString(result, options);
 	      
